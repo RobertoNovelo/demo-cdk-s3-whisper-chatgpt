@@ -8,6 +8,9 @@ export default function (app: App) {
     bundle: {
       format: "esm",
     },
+    environment: {
+      REGION: app.region,
+    },
   });
   app.stack(HackStack);
 }

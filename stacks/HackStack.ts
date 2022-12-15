@@ -5,10 +5,10 @@ import {
   Bucket,
   StaticSite,
 } from "@serverless-stack/resources";
-import { PolicyStatement, Effect } from "aws-cdk-lib/aws-iam";
+import { PolicyStatement, Policy, Effect } from "aws-cdk-lib/aws-iam";
 
 export function HackStack({ stack, app }: StackContext) {
-  // User pool for minimum access to S3 bucket
+  // User pool for minimum access control to S3 bucket
   const auth = new Cognito(stack, "Auth", {
     login: ["email", "phone"],
   });
@@ -28,14 +28,26 @@ export function HackStack({ stack, app }: StackContext) {
   });
 
   // A good old S3 bucket
-  const bucket = new Bucket(stack, "Bucket", {
-    notifications: {
-      transcribe: {
-        function: {
-          handler: "functions/transcribe.handler",
+  const bucket = new Bucket(stack, "Bucket", {});
+
+  bucket.addNotifications(stack, {
+    transcribe: {
+      function: {
+        handler: "functions/transcribe.handler",
+        permissions: [
+          new PolicyStatement({
+            effect: Effect.ALLOW,
+            actions: ["transcribe:*"],
+            resources: [`*`],
+          }),
+        ],
+        environment: {
+          BUCKET_NAME: bucket.bucketName,
+          REGION: app.region,
         },
-        events: ["object_created"],
+        bind: [bucket],
       },
+      events: ["object_created"],
     },
   });
 

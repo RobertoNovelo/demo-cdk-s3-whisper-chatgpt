@@ -2,6 +2,7 @@
   "extends": "../tsconfig.json",
   "include": ["functions"],
   "compilerOptions": {
+    "noImplicitAny": false,
     "module": "esnext",
     "target": "es2017",
     "moduleResolution": "node",
