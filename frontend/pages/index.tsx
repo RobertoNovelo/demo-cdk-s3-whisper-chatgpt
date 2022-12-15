@@ -5,6 +5,8 @@ import { API } from "aws-amplify";
 import { RecordButton } from "@/components/RecordButton";
 import { Conversation } from "@/components/Conversation";
 
+import "regenerator-runtime/runtime";
+
 export default function Home() {
   return (
     <div className="container max-w-screen-lg mx-auto px-4">

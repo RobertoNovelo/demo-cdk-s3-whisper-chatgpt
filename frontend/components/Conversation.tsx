@@ -18,7 +18,16 @@ export function Conversation() {
         conversation === "LOADING" ? (
         <SpinnerIcon className="h-16 w-16 animate-spin" />
       ) : conversation === "RESULT" ? (
-        <p>{conversationHistory[conversationHistory?.length - 1]?.answer}</p>
+        <>
+          <p>
+            You:{" "}
+            {conversationHistory[conversationHistory?.length - 1]?.question}
+          </p>
+          <p>
+            ChatGPT:{" "}
+            {conversationHistory[conversationHistory?.length - 1]?.answer}
+          </p>
+        </>
       ) : null}
     </div>
   );
