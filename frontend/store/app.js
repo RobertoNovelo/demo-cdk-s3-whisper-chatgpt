@@ -1,6 +1,9 @@
 import { atom } from "recoil";
 
-export const recordingState = atom({ key: "RecordingState", default: false });
+export const conversationState = atom({
+  key: "ConversationState",
+  default: "IDLE",
+});
 export const questionHistory = atom({
   key: "QuestionHistoryState",
   default: [],
