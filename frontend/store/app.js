@@ -4,7 +4,9 @@ export const conversationState = atom({
   key: "ConversationState",
   default: "IDLE",
 });
-export const questionHistory = atom({
-  key: "QuestionHistoryState",
+
+export const conversationHistoryState = atom({
+  key: "ConversationHistoryState",
+  // {question:"Some question", answer:"Some Answer"}
   default: [],
 });
