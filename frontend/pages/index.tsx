@@ -1,7 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import "@/lib/configureAmplify";
+import { MicIcon, SpinnerIcon } from "@/components/Icons";
 import { API } from "aws-amplify";
 
 export default function Home() {
@@ -15,68 +14,21 @@ export default function Home() {
     });
   }
   return (
-    <div className="container max-w-screen-lg mx-auto">
+    <div className="container max-w-screen-lg mx-auto px-4">
       <Head>
         <title>For a hacking session</title>
         <meta name="description" content="Skeleton app for a demo" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <main className="flex flex-col items-center justify-between py-16 h-screen space-y-6">
+        <h1 className="text-3xl">Ask ChatGPT</h1>
+        <div className="min-h-0 grow w-full overflow-y-auto flex justify-center items-center flex-col">
+          <SpinnerIcon className="h-16 w-16 animate-spin" />
         </div>
+        <button className="rounded-full bg-red-700 text-white p-2">
+          <MicIcon className="text-white h-12 w-12" />
+        </button>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   );
 }
