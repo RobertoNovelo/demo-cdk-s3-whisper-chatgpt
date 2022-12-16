@@ -13,9 +13,9 @@ export function Conversation() {
     // conversationHistory[conversationHistory?.length - 1]?.question
   }, [conversationHistory]);
   return (
-    <div className="min-h-0 grow w-full overflow-y-auto flex justify-center items-center flex-col">
-      {conversation === "IDLE" ? null : conversation === "RECORDING" ||
-        conversation === "LOADING" ? (
+    <div className="min-h-0 grow w-full overflow-y-auto flex justify-center items-center flex-col px-4 text-center">
+      {conversation === "IDLE" ||
+      conversation === "RECORDING" ? null : conversation === "LOADING" ? (
         <SpinnerIcon className="h-16 w-16 animate-spin" />
       ) : conversation === "RESULT" ? (
         <>

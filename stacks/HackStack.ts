@@ -5,6 +5,7 @@ import {
   Bucket,
   StaticSite,
 } from "@serverless-stack/resources";
+import { Runtime } from "aws-cdk-lib/aws-lambda";
 import { PolicyStatement, Policy, Effect } from "aws-cdk-lib/aws-iam";
 
 export function HackStack({ stack, app }: StackContext) {
@@ -20,8 +21,12 @@ export function HackStack({ stack, app }: StackContext) {
     },
     routes: {
       // Some random public API
-      "GET /public": {
-        function: "functions/lambda.handler",
+      "POST /chatgpt": {
+        function: {
+          handler: "functions/lambda.handler",
+          environment: { CHATGPT_API_KEY: process.env.CHATGPT_API_KEY || "" },
+          timeout: 20,
+        },
         authorizer: "none",
       },
     },
@@ -73,7 +78,7 @@ export function HackStack({ stack, app }: StackContext) {
   ]);
 
   // Allow authenticated users to invoke the API
-  auth.attachPermissionsForAuthUsers(stack, [api]);
+  auth.attachPermissionsForUnauthUsers(stack, [api]);
 
   const site = new StaticSite(stack, "StaticNextJsSite", {
     path: "frontend",
