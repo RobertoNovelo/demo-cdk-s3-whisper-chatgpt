@@ -4,7 +4,7 @@ import { MicIcon, SpinnerIcon } from "@/components/Icons";
 import { API } from "aws-amplify";
 import { RecordButton } from "@/components/RecordButton";
 import { Conversation } from "@/components/Conversation";
-import { TestSpeech } from "@/components/TestSpeech";
+import { TestAudio } from "@/components/TestAudio";
 
 import "regenerator-runtime/runtime";
 
@@ -19,7 +19,7 @@ export default function Home() {
       <main className="flex flex-col items-center justify-between py-16 h-[90vh] space-y-6 text-center">
         <div className="space-y-4">
           <h1 className="text-3xl">Ask ChatGPT</h1>
-          <TestSpeech />
+          <TestAudio />
         </div>
         <Conversation />
         <RecordButton />

@@ -7,14 +7,14 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 
-export function TestSpeech() {
+export function TestAudio() {
   const handleClick = () => {
     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Hello!"));
   };
 
   return (
     <button onClick={handleClick} className={`appearance-none`}>
-      (Test speech)
+      (Test audio)
     </button>
   );
 }
