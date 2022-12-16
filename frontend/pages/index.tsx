@@ -4,6 +4,7 @@ import { MicIcon, SpinnerIcon } from "@/components/Icons";
 import { API } from "aws-amplify";
 import { RecordButton } from "@/components/RecordButton";
 import { Conversation } from "@/components/Conversation";
+import { TestSpeech } from "@/components/TestSpeech";
 
 import "regenerator-runtime/runtime";
 
@@ -15,8 +16,11 @@ export default function Home() {
         <meta name="description" content="Skeleton app for a demo" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex flex-col items-center justify-between py-16 h-screen space-y-6">
-        <h1 className="text-3xl">Ask ChatGPT</h1>
+      <main className="flex flex-col items-center justify-between py-16 h-[90vh] space-y-6 text-center">
+        <div className="space-y-4">
+          <h1 className="text-3xl">Ask ChatGPT</h1>
+          <TestSpeech />
+        </div>
         <Conversation />
         <RecordButton />
       </main>
